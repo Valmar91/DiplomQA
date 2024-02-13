@@ -13,9 +13,10 @@ public class SQLHelper {
 
     private SQLHelper() {
     }
+
     @SneakyThrows
     private static Connection getConn() {
-        return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
+        return DriverManager.getConnection(System.getProperty("dburl"), "app", "pass");
     }
 //        if(System.getProperty("db.url").contains("postgresql")) {
 //            return DriverManager.getConnection(System.getProperty("db.url"), "root", "rootroot");
