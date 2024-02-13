@@ -6,8 +6,8 @@ services:
       - '5432:5432'
     environment:
       - POSTGRES_DB=db
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=rootroot
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
   mysql:
     image: mysql:8.0.18
     ports: 

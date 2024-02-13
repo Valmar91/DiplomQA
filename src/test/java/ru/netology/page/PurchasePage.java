@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Page {
+public class PurchasePage {
 
     //Кнопка "купить"
     private final SelenideElement buyButton = $(byText("Купить"));
@@ -47,6 +47,7 @@ public class Page {
         buyButton.click();
         buyHeading.shouldBe(Condition.visible);
     }
+
     //Нажать на кнопку "Купить в кредит", заголовок "Кредит по данным карты"
     public void cardCredit() {
         creditButton.click();
@@ -55,7 +56,6 @@ public class Page {
 
     //Пустые поля
     public void emptyForm() {
-        continueButton.click();
         cardNumberFieldError.shouldBe(Condition.visible);
         monthFieldError.shouldBe(Condition.visible);
         yearFieldError.shouldBe(Condition.visible);
@@ -63,13 +63,7 @@ public class Page {
         cvcFieldError.shouldBe(Condition.visible);
     }
 
-    //Пустой номер карты
-    public void emptyCardNumberField(DataHelper.CardInfo info) {
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
+    public void setCardNumberFieldErrorHidden() {
         cardNumberFieldError.shouldBe(Condition.visible);
         monthFieldError.shouldBe(Condition.hidden);
         yearFieldError.shouldBe(Condition.hidden);
@@ -77,13 +71,8 @@ public class Page {
         cvcFieldError.shouldBe(Condition.hidden);
     }
 
-    //пустое поле владельца
-    public void emptyOwnerField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
+
+    public void setOwnerFieldErrorHidden() {
         ownerFieldError.shouldBe(Condition.visible);
         cardNumberFieldError.shouldBe(Condition.hidden);
         monthFieldError.shouldBe(Condition.hidden);
@@ -91,13 +80,8 @@ public class Page {
         cvcFieldError.shouldBe(Condition.hidden);
     }
 
-    //Пустое поле CVC
-    public void emptyCVCField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        continueButton.click();
+
+    public void setCvcFieldErrorHidden() {
         cvcFieldError.shouldBe(Condition.visible);
         cardNumberFieldError.shouldBe(Condition.hidden);
         monthFieldError.shouldBe(Condition.hidden);
@@ -105,57 +89,8 @@ public class Page {
         ownerFieldError.shouldBe(Condition.hidden);
     }
 
-    //пустое поле месяца
-    public void emptyMonthField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
-        monthFieldError.shouldBe(Condition.visible);
-        cardNumberFieldError.shouldBe(Condition.hidden);
-        yearFieldError.shouldBe(Condition.hidden);
-        ownerFieldError.shouldBe(Condition.hidden);
-        cvcFieldError.shouldBe(Condition.hidden);;
-    }
 
-    //Пустое поле года
-    public void emptyYearField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
-        yearFieldError.shouldBe(Condition.visible);
-        cardNumberFieldError.shouldBe(Condition.hidden);
-        monthFieldError.shouldBe(Condition.hidden);
-        ownerFieldError.shouldBe(Condition.hidden);
-        cvcFieldError.shouldBe(Condition.hidden);;
-    }
-
-    //неправильный номер карты
-    public void invalidCardNumberField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
-        cardNumberFieldError.shouldBe(Condition.visible);
-        monthFieldError.shouldBe(Condition.hidden);
-        yearFieldError.shouldBe(Condition.hidden);
-        ownerFieldError.shouldBe(Condition.hidden);
-        cvcFieldError.shouldBe(Condition.hidden);
-    }
-
-    //Ошибка в поле месяца
-    public void invalidMonthField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
+    public void setMonthFieldErrorHidden() {
         monthFieldError.shouldBe(Condition.visible);
         cardNumberFieldError.shouldBe(Condition.hidden);
         yearFieldError.shouldBe(Condition.hidden);
@@ -163,14 +98,8 @@ public class Page {
         cvcFieldError.shouldBe(Condition.hidden);
     }
 
-    //Ошибка в поле года
-    public void invalidYearField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
+
+    public void setYearFieldErrorHidden() {
         yearFieldError.shouldBe(Condition.visible);
         cardNumberFieldError.shouldBe(Condition.hidden);
         monthFieldError.shouldBe(Condition.hidden);
@@ -178,35 +107,6 @@ public class Page {
         cvcFieldError.shouldBe(Condition.hidden);
     }
 
-    //Ошибка в поле владельца
-    public void invalidOwnerField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
-        ownerFieldError.shouldBe(Condition.visible);
-        cardNumberFieldError.shouldBe(Condition.hidden);
-        monthFieldError.shouldBe(Condition.hidden);
-        yearFieldError.shouldBe(Condition.hidden);
-        cvcFieldError.shouldBe(Condition.hidden);
-    }
-
-    //Ошибка в полеCVC
-    public void invalidCVCField(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcField.setValue(info.getCvc());
-        continueButton.click();
-        cvcFieldError.shouldBe(Condition.visible);
-        cardNumberFieldError.shouldBe(Condition.hidden);
-        monthFieldError.shouldBe(Condition.hidden);
-        yearFieldError.shouldBe(Condition.hidden);
-        ownerFieldError.shouldBe(Condition.hidden);
-    }
 
     //отправка данных
     public void sendingData(DataHelper.CardInfo info) {

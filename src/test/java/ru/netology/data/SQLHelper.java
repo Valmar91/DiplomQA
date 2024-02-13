@@ -13,16 +13,18 @@ public class SQLHelper {
 
     private SQLHelper() {
     }
-
-    private static Connection getConn() throws SQLException {
-        if(System.getProperty("db.url").contains("postgresql")) {
-            return DriverManager.getConnection(System.getProperty("db.url"), "root", "rootroot");
-        }
-        if (System.getProperty("db.url").contains("mysql")) {
-            return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
-        }
-        throw new SQLException("No DATABASE");
+    @SneakyThrows
+    private static Connection getConn() {
+        return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
     }
+//        if(System.getProperty("db.url").contains("postgresql")) {
+//            return DriverManager.getConnection(System.getProperty("db.url"), "root", "rootroot");
+//        }
+//        if (System.getProperty("db.url").contains("mysql")) {
+//            return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
+//        }
+//        throw new SQLException("No DATABASE");
+//    }
 
     @SneakyThrows
     public static void cleanDataBase() {
