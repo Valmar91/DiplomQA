@@ -26,9 +26,6 @@
 1) Клонировать проект командой `git clone https://github.com/Valmar91/DiplomQA.git`
 2) Открыть клонированный проект программой Intellij IDEA
 3) Запустить контейнеры командой `docker-compose up --build -d`
-4) Сделать `application.properties` из 
-`application.mysql.properties` или `application.postgresql.properties` в зависимости от базы данных, предполагаемой для использования
-5) В `build.gradle` снять сокрытие с `systemProperty 'db.url',  System.getProperty('db.url', "jdbc:mysql://localhost:3306/app")` или `systemProperty 'db.url',  System.getProperty('db.url', "jdbc:postgresql://localhost:5432/db")` в зависимости от базы данных, предполагаемой для использования, вторую оставив сокрытой
-6) Запустить aqa-shop.jar командой `java -jar aqa-shop.jar`
-7) Запустить тесты командой `./gradlew clean test`, либо непосредствено нажав `Run Test` в классе `PurchaseTest`
-8) Для просмотра отчёта Allure ввести в терминале команду `./gradlew allureServe`
+4) Запустить aqa-shop.jar командой `java -D:spring.profiles.active=mysql -jar aqa-shop.jar`, для работы с базой данных MySQL, либо `java -D:spring.profiles.active=postgresql -jar aqa-shop.jar`, для рботы с базой данных PostgreSQL
+5) Запустить тесты командой `./gradlew clean test -Ddburl=jdbc:mysql://localhost:3306/app `, если работа идйт с БД MySQL, либо `./gradlew clean test -Ddburl=jdbc:postgresql://localhost:5432/db`, если работа идет с БД PostgreSQL
+6) Для просмотра отчёта Allure ввести в терминале команду `./gradlew allureServe`
