@@ -10,7 +10,7 @@
 
 [Отчёт опроведённом тестировании](https://github.com/Valmar91/DiplomQA/blob/main/Report.md)
 
-[Отчёт опроведённой автоматизации тестирования]()
+[Отчёт опроведённой автоматизации тестирования](https://github.com/Valmar91/DiplomQA/blob/main/Summary.md)
 
 ## Подготовка и запуск тестов
 
